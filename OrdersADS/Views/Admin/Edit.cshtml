@@ -1,0 +1,30 @@
+﻿@model OrdersADS.Models.AppUser
+
+@{
+    ViewBag.Title = "Редактирование учетной записи";
+}
+
+<h2>Редактирование учетной записи</h2>
+<div class="form-group">
+    <label>Id</label>
+    <p class="form-control-static">@Model.Id</p>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.Id)
+    <div class="form-group">
+        <label>Имя</label>
+        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Пароль</label>
+        <input name="password" type="password" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+    @Html.ActionLink("Отмена", "Index", null, new { @class = "btn btn-default" })
+}
