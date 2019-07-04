@@ -1,0 +1,73 @@
+﻿@using OrdersADS.Models
+@model OrdersADS.Models.RoleEditModel
+
+@{
+    ViewBag.Title = "Редактирование роли";
+}
+
+<h2>Редактирование роли</h2>
+@Html.ValidationSummary()
+@using (Html.BeginForm())
+{
+    <input type="hidden" name="roleName" value="@Model.Role.Name"/>
+    <table class="table">
+        @if(Model.NonMembers.Count() == 0)
+        {
+            <tr>
+                <td colspan="2">
+                    Все пользователи в роли
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td>
+                    User ID
+                </td>
+                <td>
+                    Добавить в роль
+                </td>
+            </tr>
+            foreach(AppUser user in Model.NonMembers)
+            {
+                <tr>
+                    <td>
+                        @user.UserName
+                    </td>
+                    <td>
+                        <input type="checkbox" name="IdsToAdd" value="@user.Id"/>
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+    <table class="table">
+        @if(Model.Members.Count() == 0)
+        {
+            <tr>
+                <td colspan="2">
+                    Нет пользователей в роли
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <td>User ID</td>
+                <td>Удалить из роли</td>
+            </tr>
+            foreach(AppUser user in Model.Members)
+            {
+                <tr>
+                    <td>@user.UserName</td>
+                    <td>
+                        <input type="checkbox" name="IdsToDelete" value="@user.Id"/>
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+    <input type="submit" value="Сохранить" class="btn btn-primary"/>
+    @Html.ActionLink("Отмена", "Index", null, new { @class="btn btn-default"})
+}

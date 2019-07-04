@@ -157,11 +157,24 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RoleAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\AppIdentityDbContext.cs" />
+    <Compile Include="Infrastructure\AppRoleManager.cs" />
     <Compile Include="Infrastructure\AppUserManager.cs" />
+    <Compile Include="Infrastructure\IdentityHelpers.cs" />
+    <Compile Include="Migrations\201907030408151_InitialCreate.cs" />
+    <Compile Include="Migrations\201907030408151_InitialCreate.Designer.cs">
+      <DependentUpon>201907030408151_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907040301416_UsersAndRoles.cs" />
+    <Compile Include="Migrations\201907040301416_UsersAndRoles.Designer.cs">
+      <DependentUpon>201907040301416_UsersAndRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AppRole.cs" />
     <Compile Include="Models\AppUserModels.cs" />
     <Compile Include="Models\UserViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -207,6 +220,9 @@
     <Content Include="Views\Shared\Error2.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\RoleAdmin\Index.cshtml" />
+    <Content Include="Views\RoleAdmin\Create.cshtml" />
+    <Content Include="Views\RoleAdmin\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -223,6 +239,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201907030408151_InitialCreate.resx">
+      <DependentUpon>201907030408151_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907040301416_UsersAndRoles.resx">
+      <DependentUpon>201907040301416_UsersAndRoles.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

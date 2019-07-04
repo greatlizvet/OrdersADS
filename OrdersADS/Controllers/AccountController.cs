@@ -16,10 +16,16 @@ namespace OrdersADS.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        public ActionResult Logout()
+        {
+            AuthManager.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
+
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            ViewBag.ReturnUrl = returnUrl;
+            ViewBag.returnUrl = returnUrl;
             return View();
         }
 

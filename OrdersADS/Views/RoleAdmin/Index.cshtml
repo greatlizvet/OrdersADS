@@ -1,0 +1,65 @@
+﻿@using OrdersADS.Infrastructure
+@using OrdersADS.Models
+@model IEnumerable<OrdersADS.Models.AppRole>
+
+@{
+    ViewBag.Title = "Роли";
+}
+
+<h2>Роли</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Users)
+        </th>
+        <th></th>
+    </tr>
+    @if(Model.Count() == 0)
+    {
+        <tr>
+            <th class="text-center" colspan="4">
+                Нет ролей
+            </th>
+        </tr>
+    }
+    else
+    {
+        foreach(AppRole role in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => role.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => role.Name)
+                </td>
+                <td>
+                    @if(role.Users == null || role.Users.Count == 0)
+                    {
+                        @: Нет пользователей в роли
+                    }
+                    else
+                    {
+                        <p>
+                            @string.Join(",", role.Users.Select(x => Html.GetUserName(x.UserId)))
+                        </p>
+                    }
+                </td>
+                <td>
+                    @using (Html.BeginForm("Delete", "RoleAdmin", new { id = role.Id }))
+                    {
+                        @Html.ActionLink("Изменить", "Edit", new { id = role.Id}, new { @class = "btn bth-primary"})
+                        <input type="submit" class="btn btn-danger btn-xs" value="Удалить"/>
+                    }
+                </td>
+            </tr>
+        }
+    }
+</table>
+@Html.ActionLink("Добавить", "Create", null, new { @class="btn btn-primary"})

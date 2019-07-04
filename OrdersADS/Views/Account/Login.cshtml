@@ -9,7 +9,7 @@
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    <input type="hidden" name="returnUrl" value="ViewBag.ReturnUrl"/>
+    <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl"/>
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
