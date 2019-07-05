@@ -1,0 +1,63 @@
+﻿@using OrdersADS.Models
+@model OrdersADS.Models.Provider
+
+@{
+    ViewBag.Title = "Информация";
+}
+
+<h2>Информация</h2>
+
+<div>
+    <h4>Поставщик</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+    </dl>
+</div>
+<div class="display-label"><b>Поставки</b></div>
+<ul>
+    @foreach (Delivery o in Model.Deliveries)
+    {
+        <li>@o.Order.Name</li>
+    }
+</ul>
+<div class="display-label"><b>Детали</b></div>
+<ul>
+    @foreach (Detail o in Model.Details)
+    {
+        <li>@o.Name</li>
+    }
+</ul>
+    @Html.ActionLink("Изменить", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary"}) |
+    @Html.ActionLink("Обратно", "Index", null, new { @class = "btn btn-default"})

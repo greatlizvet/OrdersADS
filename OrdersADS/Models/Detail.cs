@@ -15,7 +15,7 @@ namespace OrdersADS.Models
         public string Articul { get; set; }
 
         public Order Order { get; set; }
-        public ICollection<Provider> Providers { get; set; }
+        public virtual ICollection<Provider> Providers { get; set; }
 
         public Detail()
         {

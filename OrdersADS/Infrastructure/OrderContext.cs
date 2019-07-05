@@ -15,9 +15,5 @@ namespace OrdersADS.Infrastructure
         public DbSet<Provider> Providers { get; set; }
         public DbSet<Smeta> Smetas { get; set; }
         public DbSet<Status> Statuses { get; set; }
-
-        public OrderContext() 
-            : base("OrderContext")
-        { }
     }
 }

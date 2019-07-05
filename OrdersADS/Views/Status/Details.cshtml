@@ -1,0 +1,33 @@
+﻿@using OrdersADS.Models
+@model OrdersADS.Models.Status
+
+@{
+    ViewBag.Title = "Информация";
+}
+
+<h2>О статусе</h2>
+
+<div>
+    <h4>Статус</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusName)
+        </dd>
+
+    </dl>
+</div><div class="display-label"><b>Заказы</b></div>
+<ul>
+    @foreach (Order o in Model.Orders)
+    {
+        <li>@o.Name</li>
+    }
+</ul>
+<p>
+    @Html.ActionLink("Изменить", "Edit", new { id = Model.Id }, new {@class = "btn btn-primary") |
+    @Html.ActionLink("Обратно", "Index", null, new { @class = "btn btn-default"})
+</p>

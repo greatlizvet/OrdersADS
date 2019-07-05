@@ -12,11 +12,11 @@ namespace OrdersADS.Models
 
         [Display(Name = "Заказ")]
         public int OrderId { get; set; }
-        public Order Order { get; set; }
+        public virtual Order Order { get; set; }
         
         [Display(Name = "Поставщик")]
         public int ProviderId { get; set; }
-        public Provider Provider { get; set; }
+        public virtual Provider Provider { get; set; }
 
         [Display(Name = "Стоимость")]
         public int Cost { get; set; }

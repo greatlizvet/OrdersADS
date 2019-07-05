@@ -24,8 +24,8 @@ namespace OrdersADS.Models
         [Display(Name = "Юридический адрес")]
         public string Address { get; set; }
 
-        public ICollection<Detail> Details { get; set; }
-        public ICollection<Delivery> Deliveries { get; set; }
+        public virtual ICollection<Detail> Details { get; set; }
+        public virtual ICollection<Delivery> Deliveries { get; set; }
 
         public Provider()
         {

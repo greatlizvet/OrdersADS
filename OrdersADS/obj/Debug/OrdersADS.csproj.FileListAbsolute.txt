@@ -105,3 +105,4 @@ F:\Projects\Sharp\OrdersADS\OrdersADS\obj\Debug\OrdersADS.pdb
 F:\Projects\Sharp\OrdersADS\OrdersADS\obj\Debug\OrdersADS.Migrations.InitialCreate.resources
 F:\Projects\Sharp\OrdersADS\OrdersADS\obj\Debug\OrdersADS.csproj.GenerateResource.cache
 F:\Projects\Sharp\OrdersADS\OrdersADS\obj\Debug\OrdersADS.Migrations.UsersAndRoles.resources
+F:\Projects\Sharp\OrdersADS\OrdersADS\obj\Debug\OrdersADS.Migrations.OrderContext.resources

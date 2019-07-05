@@ -10,10 +10,13 @@ namespace OrdersADS.Models
     {
         public int Id { get; set; }
 
+        [Display(Name = "Название")]
+        public string Name { get; set; }
+
         //id детали, которую заказывают и нав поле
         [Display(Name = "Деталь")]
         public int DetailId { get; set; }
-        public Detail Detail { get; set; }
+        public virtual Detail Detail { get; set; }
 
         [Display(Name = "Количество")]
         //кол-во деталей
@@ -22,6 +25,6 @@ namespace OrdersADS.Models
         [Display(Name = "Статус заказа")]
         //статус заказа 
         public int StatusId { get; set; }
-        public Status Status { get; set; }
+        public virtual Status Status { get; set; }
     }
 }

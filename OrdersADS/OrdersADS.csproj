@@ -156,8 +156,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\DetailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProviderController.cs" />
     <Compile Include="Controllers\RoleAdminController.cs" />
+    <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -173,6 +176,10 @@
     <Compile Include="Migrations\201907040301416_UsersAndRoles.cs" />
     <Compile Include="Migrations\201907040301416_UsersAndRoles.Designer.cs">
       <DependentUpon>201907040301416_UsersAndRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907050352197_OrderContext.cs" />
+    <Compile Include="Migrations\201907050352197_OrderContext.Designer.cs">
+      <DependentUpon>201907050352197_OrderContext.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppRole.cs" />
@@ -230,6 +237,17 @@
     <Content Include="Views\RoleAdmin\Index.cshtml" />
     <Content Include="Views\RoleAdmin\Create.cshtml" />
     <Content Include="Views\RoleAdmin\Edit.cshtml" />
+    <Content Include="Views\Status\Index.cshtml" />
+    <Content Include="Views\Status\Create.cshtml" />
+    <Content Include="Views\Status\Details.cshtml" />
+    <Content Include="Views\Status\Edit.cshtml" />
+    <Content Include="Views\Provider\Index.cshtml" />
+    <Content Include="Views\Provider\Create.cshtml" />
+    <Content Include="Views\Provider\Details.cshtml" />
+    <Content Include="Views\Provider\Edit.cshtml" />
+    <Content Include="Views\Detail\Index.cshtml" />
+    <Content Include="Views\Detail\Create.cshtml" />
+    <Content Include="Views\Detail\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -253,6 +271,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907040301416_UsersAndRoles.resx">
       <DependentUpon>201907040301416_UsersAndRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907050352197_OrderContext.resx">
+      <DependentUpon>201907050352197_OrderContext.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
