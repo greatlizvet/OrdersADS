@@ -12,6 +12,7 @@ using OrdersADS.Models;
 
 namespace OrdersADS.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class RoleAdminController : Controller
     {
         public ActionResult Index()

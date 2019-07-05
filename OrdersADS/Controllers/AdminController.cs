@@ -11,6 +11,7 @@ using OrdersADS.Models;
 
 namespace OrdersADS.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class AdminController : Controller
     {
         // GET: Admin

@@ -165,6 +165,7 @@
     <Compile Include="Infrastructure\AppRoleManager.cs" />
     <Compile Include="Infrastructure\AppUserManager.cs" />
     <Compile Include="Infrastructure\IdentityHelpers.cs" />
+    <Compile Include="Infrastructure\OrderContext.cs" />
     <Compile Include="Migrations\201907030408151_InitialCreate.cs" />
     <Compile Include="Migrations\201907030408151_InitialCreate.Designer.cs">
       <DependentUpon>201907030408151_InitialCreate.cs</DependentUpon>
@@ -176,6 +177,12 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppRole.cs" />
     <Compile Include="Models\AppUserModels.cs" />
+    <Compile Include="Models\Delivery.cs" />
+    <Compile Include="Models\Detail.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Provider.cs" />
+    <Compile Include="Models\Smeta.cs" />
+    <Compile Include="Models\Status.cs" />
     <Compile Include="Models\UserViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
