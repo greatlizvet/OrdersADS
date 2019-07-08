@@ -45,16 +45,9 @@
 
     </dl>
 </div>
-<div class="display-label"><b>Поставки</b></div>
-<ul>
-    @foreach (Delivery o in Model.Deliveries)
-    {
-        <li>@o.Order.Name</li>
-    }
-</ul>
 <div class="display-label"><b>Детали</b></div>
 <ul>
-    @foreach (Detail o in Model.Details)
+    @foreach (Order o in Model.Orders)
     {
         <li>@o.Name</li>
     }

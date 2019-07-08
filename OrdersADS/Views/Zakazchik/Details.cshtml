@@ -1,0 +1,60 @@
+﻿@using OrdersADS.Models
+@model OrdersADS.Models.Zakazchik
+
+@{
+    ViewBag.Title = "Информация о заказчике";
+}
+
+<h2>Информация</h2>
+
+<div>
+    <h4>Заказчик</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Requests)
+        </dt>
+        <dd>
+            <ul>
+                @foreach (Request r in Model.Requests)
+                {
+                    <li>@r.Name</li>
+                }
+            </ul>
+        </dd>
+
+    </dl>
+</div>
+@Html.ActionLink("Изменить", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" }) |
+@Html.ActionLink("Обратно", "Index", null, new { @class = "btn btn-default" })

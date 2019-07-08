@@ -20,9 +20,9 @@
         </dd>
 
     </dl>
-</div><div class="display-label"><b>Заказы</b></div>
+</div><div class="display-label"><b>Заявки</b></div>
 <ul>
-    @foreach (Order o in Model.Orders)
+    @foreach (Request o in Model.Requests)
     {
         <li>@o.Name</li>
     }

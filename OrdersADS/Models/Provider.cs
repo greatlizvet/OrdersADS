@@ -24,13 +24,11 @@ namespace OrdersADS.Models
         [Display(Name = "Юридический адрес")]
         public string Address { get; set; }
 
-        public virtual ICollection<Detail> Details { get; set; }
-        public virtual ICollection<Delivery> Deliveries { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
 
         public Provider()
         {
-            Details = new List<Detail>();
-            Deliveries = new List<Delivery>();
+            Orders = new List<Order>();
         }
     }
 }

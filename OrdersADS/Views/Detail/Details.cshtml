@@ -26,20 +26,14 @@
         <dd>
             @Html.DisplayFor(model => model.Articul)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Order)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Order.Name)
-        </dd>
 
     </dl>
 </div>
-<div class="display-label"><b>Поставки</b></div>
+<div class="display-label"><b>Заказы</b></div>
 <ul>
-    @foreach (Provider o in Model.Providers)
+    @foreach (OrderDetail o in Model.OrderDetails)
     {
-        <li>@o.Name</li>
+        <li>@o.Order.Name</li>
     }
 </ul>
     @Html.ActionLink("Изменить", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary"})

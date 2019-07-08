@@ -13,18 +13,27 @@ namespace OrdersADS.Models
         [Display(Name = "Название")]
         public string Name { get; set; }
 
-        //id детали, которую заказывают и нав поле
-        [Display(Name = "Деталь")]
-        public int DetailId { get; set; }
-        public virtual Detail Detail { get; set; }
+        [Display(Name = "Заказ")]
+        public int RequestId { get; set; }
+        public virtual Request Request { get; set; }
 
-        [Display(Name = "Количество")]
-        //кол-во деталей
-        public int Count { get; set; }
+        [Display(Name = "Дата оформления")]
+        [DataType(DataType.DateTime)]
+        public DateTime dateTime { get; set; }
 
-        [Display(Name = "Статус заказа")]
-        //статус заказа 
-        public int StatusId { get; set; }
-        public virtual Status Status { get; set; }
+        [Display(Name = "Поставщик")]
+        public int ProviderId { get; set; }
+        public virtual Provider Provider { get; set; }
+
+        public ICollection<Detail> Details { get; set; }
+
+        [Display(Name = "Статус")]
+        public int StatusOrderId { get; set; }
+        public virtual StatusOrder StatusOrder { get; set; }
+
+        public Order()
+        {
+            Details = new List<Detail>();
+        }
     }
 }

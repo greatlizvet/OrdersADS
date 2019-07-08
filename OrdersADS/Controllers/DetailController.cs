@@ -10,7 +10,7 @@ namespace OrdersADS.Controllers
 {
     public class DetailController : Controller
     {
-        OrderContext db = new OrderContext();
+        AppIdentityDbContext db = new AppIdentityDbContext();
         // GET: Detail
         public ActionResult Index()
         {

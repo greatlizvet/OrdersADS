@@ -106,3 +106,6 @@ F:\Projects\Sharp\OrdersADS\OrdersADS\obj\Debug\OrdersADS.Migrations.InitialCrea
 F:\Projects\Sharp\OrdersADS\OrdersADS\obj\Debug\OrdersADS.csproj.GenerateResource.cache
 F:\Projects\Sharp\OrdersADS\OrdersADS\obj\Debug\OrdersADS.Migrations.UsersAndRoles.resources
 F:\Projects\Sharp\OrdersADS\OrdersADS\obj\Debug\OrdersADS.Migrations.OrderContext.resources
+F:\Projects\Sharp\OrdersADS\OrdersADS\obj\Debug\OrdersADS.Migrations.AddModels.resources
+F:\Projects\Sharp\OrdersADS\OrdersADS\obj\Debug\OrdersADS.Migrations.StatusRequests.resources
+F:\Projects\Sharp\OrdersADS\OrdersADS\obj\Debug\OrdersADS.Migrations.VirtualProp.resources

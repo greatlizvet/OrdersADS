@@ -158,9 +158,13 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\DetailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProviderController.cs" />
+    <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\RoleAdminController.cs" />
     <Compile Include="Controllers\StatusController.cs" />
+    <Compile Include="Controllers\StatusOrderController.cs" />
+    <Compile Include="Controllers\ZakazchikController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -168,7 +172,6 @@
     <Compile Include="Infrastructure\AppRoleManager.cs" />
     <Compile Include="Infrastructure\AppUserManager.cs" />
     <Compile Include="Infrastructure\IdentityHelpers.cs" />
-    <Compile Include="Infrastructure\OrderContext.cs" />
     <Compile Include="Migrations\201907030408151_InitialCreate.cs" />
     <Compile Include="Migrations\201907030408151_InitialCreate.Designer.cs">
       <DependentUpon>201907030408151_InitialCreate.cs</DependentUpon>
@@ -181,16 +184,30 @@
     <Compile Include="Migrations\201907050352197_OrderContext.Designer.cs">
       <DependentUpon>201907050352197_OrderContext.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907080303006_AddModels.cs" />
+    <Compile Include="Migrations\201907080303006_AddModels.Designer.cs">
+      <DependentUpon>201907080303006_AddModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907080440475_StatusRequests.cs" />
+    <Compile Include="Migrations\201907080440475_StatusRequests.Designer.cs">
+      <DependentUpon>201907080440475_StatusRequests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907080503302_VirtualProp.cs" />
+    <Compile Include="Migrations\201907080503302_VirtualProp.Designer.cs">
+      <DependentUpon>201907080503302_VirtualProp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppRole.cs" />
     <Compile Include="Models\AppUserModels.cs" />
-    <Compile Include="Models\Delivery.cs" />
     <Compile Include="Models\Detail.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Provider.cs" />
-    <Compile Include="Models\Smeta.cs" />
+    <Compile Include="Models\Request.cs" />
     <Compile Include="Models\Status.cs" />
+    <Compile Include="Models\StatusOrder.cs" />
     <Compile Include="Models\UserViewModels.cs" />
+    <Compile Include="Models\Zakazchik.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -248,6 +265,23 @@
     <Content Include="Views\Detail\Index.cshtml" />
     <Content Include="Views\Detail\Create.cshtml" />
     <Content Include="Views\Detail\Details.cshtml" />
+    <Content Include="Views\Detail\Edit.cshtml" />
+    <Content Include="Views\StatusOrder\Index.cshtml" />
+    <Content Include="Views\StatusOrder\Create.cshtml" />
+    <Content Include="Views\StatusOrder\Details.cshtml" />
+    <Content Include="Views\StatusOrder\Edit.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\Create.cshtml" />
+    <Content Include="Views\Request\Index.cshtml" />
+    <Content Include="Views\Request\Create.cshtml" />
+    <Content Include="Views\Request\Details.cshtml" />
+    <Content Include="Views\Request\Edit.cshtml" />
+    <Content Include="Views\Zakazchik\Index.cshtml" />
+    <Content Include="Views\Zakazchik\Create.cshtml" />
+    <Content Include="Views\Zakazchik\Details.cshtml" />
+    <Content Include="Views\Zakazchik\Edit.cshtml" />
+    <Content Include="Views\Order\Edit.cshtml" />
+    <Content Include="Views\Order\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -274,6 +308,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907050352197_OrderContext.resx">
       <DependentUpon>201907050352197_OrderContext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907080303006_AddModels.resx">
+      <DependentUpon>201907080303006_AddModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907080440475_StatusRequests.resx">
+      <DependentUpon>201907080440475_StatusRequests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907080503302_VirtualProp.resx">
+      <DependentUpon>201907080503302_VirtualProp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -9,17 +9,18 @@ namespace OrdersADS.Models
     public class Detail
     {
         public int Id { get; set; }
+
         [Display(Name = "Наименование")]
         public string Name { get; set; }
+
         [Display(Name = "Артикул")]
         public string Articul { get; set; }
 
-        public Order Order { get; set; }
-        public virtual ICollection<Provider> Providers { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
 
         public Detail()
         {
-            Providers = new List<Provider>();
+            OrderDetails = new List<OrderDetail>();
         }
     }
 }

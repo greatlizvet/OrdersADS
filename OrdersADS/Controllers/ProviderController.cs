@@ -10,7 +10,7 @@ namespace OrdersADS.Controllers
 {
     public class ProviderController : Controller
     {
-        OrderContext db = new OrderContext();
+        AppIdentityDbContext db = new AppIdentityDbContext();
         // GET: Provider
         public ActionResult Index()
         {

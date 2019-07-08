@@ -11,11 +11,11 @@ namespace OrdersADS.Controllers
     [Authorize(Roles = "Administrator")]
     public class StatusController : Controller
     {
-        OrderContext db = new OrderContext();
+        AppIdentityDbContext db = new AppIdentityDbContext();
         // GET: Status
         public ActionResult Index()
         {
-            return View();
+            return View(db.Statuses.ToList());
         }
 
         [HttpGet]

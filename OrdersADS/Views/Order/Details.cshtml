@@ -1,0 +1,68 @@
+﻿@using OrdersADS.Models
+@model OrdersADS.Models.Order
+
+@{
+    ViewBag.Title = "Информация о заказе";
+}
+
+<h2>Информация</h2>
+
+<div>
+    <h4>Заказ</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequestId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Request.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProviderId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Provider.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusOrderId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusOrder.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Details)
+        </dt>
+        <dd>
+            <ul>
+                @foreach (Detail d in Model.Details)
+                {
+                    <li>@d.Name</li>
+                }
+            </ul>
+        </dd>
+
+    </dl>
+</div>
+@Html.ActionLink("Изменить", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" }) |
+@Html.ActionLink("Обратно", "Index", null, new { @class = "btn btn-default" })
