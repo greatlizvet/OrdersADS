@@ -155,10 +155,12 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AccountingController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\DetailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ProvideController.cs" />
     <Compile Include="Controllers\ProviderController.cs" />
     <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\RoleAdminController.cs" />
@@ -196,12 +198,16 @@
     <Compile Include="Migrations\201907080503302_VirtualProp.Designer.cs">
       <DependentUpon>201907080503302_VirtualProp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907090258055_oldVersion.cs" />
+    <Compile Include="Migrations\201907090258055_oldVersion.Designer.cs">
+      <DependentUpon>201907090258055_oldVersion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppRole.cs" />
     <Compile Include="Models\AppUserModels.cs" />
     <Compile Include="Models\Detail.cs" />
     <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\OrderDetail.cs" />
+    <Compile Include="Models\OrderDetails.cs" />
     <Compile Include="Models\Provider.cs" />
     <Compile Include="Models\Request.cs" />
     <Compile Include="Models\Status.cs" />
@@ -282,6 +288,8 @@
     <Content Include="Views\Zakazchik\Edit.cshtml" />
     <Content Include="Views\Order\Edit.cshtml" />
     <Content Include="Views\Order\Details.cshtml" />
+    <Content Include="Views\Provide\Index.cshtml" />
+    <Content Include="Views\Accounting\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -317,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907080503302_VirtualProp.resx">
       <DependentUpon>201907080503302_VirtualProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907090258055_oldVersion.resx">
+      <DependentUpon>201907090258055_oldVersion.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -19,7 +19,7 @@ namespace OrdersADS.Infrastructure
 
         public DbSet<Detail> Details { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<OrderDetails> OrderDetails { get; set; }
         public DbSet<Provider> Providers { get; set; }
         public DbSet<Request> Requests { get; set; }
         public DbSet<Status> Statuses { get; set; }

@@ -1,12 +1,9 @@
 ﻿@using OrdersADS.Models
 @model OrdersADS.Models.Order
-
 @{
     ViewBag.Title = "Информация о заказе";
 }
-
 <h2>Информация</h2>
-
 <div>
     <h4>Заказ</h4>
     <hr />
@@ -14,39 +11,30 @@
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.RequestId)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Request.Name)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.dateTime)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.dateTime)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.ProviderId)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Provider.Name)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.StatusOrderId)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.StatusOrder.Name)
         </dd>
@@ -61,8 +49,15 @@
                 }
             </ul>
         </dd>
-
     </dl>
 </div>
 @Html.ActionLink("Изменить", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" }) |
-@Html.ActionLink("Обратно", "Index", null, new { @class = "btn btn-default" })
+@Html.ActionLink("Обратно", "Index", null, new { @class = "btn btn-default" }) |
+@if (Model.StatusOrderId == 2)
+{
+    @Html.ActionLink("Закупить", "Buy", new { id = Model.Id }, new { @class = "btn btn-default" })
+}
+@if (Model.StatusOrderId == 3)
+{
+    @Html.ActionLink("На складе", "OnWareHouse", new { id = Model.Id }, new { @class = "btn btn-default" })
+}

@@ -36,40 +36,23 @@ namespace OrdersADS.Controllers
 
                 db.Orders.Add(order);
                 db.SaveChanges();
+
+                Request request = db.Requests.Find(order.Id);
+                request.StatusId = 2;
             }
 
             return RedirectToAction("Index");
         }
 
-        public ActionResult Details(int? id)
+        public void Details(int? id)
         {
-            if(id == null)
-            {
-                return HttpNotFound();
-            }
-            Order order = db.Orders.Find(id);
-            if(order == null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(order);
+            Find(id, 0);
         }
 
-        public ActionResult Edit(int? id)
+        public void Edit(int? id)
         {
-            if (id == null)
-            {
-                return HttpNotFound();
-            }
-            Order order = db.Orders.Find(id);
-            if (order == null)
-            {
-                return HttpNotFound();
-            }
             GetLists();
-
-            return View(order);
+            Find(id, 1);
         }
 
         [HttpPost]
@@ -84,6 +67,7 @@ namespace OrdersADS.Controllers
 
             newOrder.Details.Clear();
             SetDetails(newOrder, selDet);
+            newOrder.Request.StatusId = 2;
 
             db.Entry(newOrder).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
@@ -107,6 +91,16 @@ namespace OrdersADS.Controllers
             return RedirectToAction("Index");
         }
 
+        public void Buy(int? id)
+        {
+            States(3, 5, id);
+        }
+
+        public void OnWarehouse(int? id)
+        {
+            States(4, 6, id);
+        }
+
         private void GetLists()
         {
             SelectList requests = new SelectList(db.Requests, "Id", "Name");
@@ -124,8 +118,50 @@ namespace OrdersADS.Controllers
                 foreach (var d in db.Details.Where(de => selDet.Contains(de.Id)))
                 {
                     order.Details.Add(d);
+                    db.OrderDetails.Add(new OrderDetails
+                    {
+                        OrderId = order.Id,
+                        DetailId = d.Id,
+                        Count = 0,
+                        Price = 0
+                    });
                 }
+            } 
+        }
+
+        private ActionResult States(int statusOrder, int statusRequest, int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
             }
+            Order order = db.Orders.Find(id);
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+
+            order.StatusOrderId = statusOrder;
+            order.Request.StatusId = statusRequest;
+            db.Entry(order).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        private ActionResult Find(int? id, int action)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            Order order = db.Orders.Find(id);
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+
+            return action == 0 ? View("Details", order) : View("Edit", order);
         }
     }
 }

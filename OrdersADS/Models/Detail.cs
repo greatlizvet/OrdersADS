@@ -15,12 +15,12 @@ namespace OrdersADS.Models
 
         [Display(Name = "Артикул")]
         public string Articul { get; set; }
-
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        
+        public virtual ICollection<OrderDetails> OrderDetails { get; set; }
 
         public Detail()
         {
-            OrderDetails = new List<OrderDetail>();
+            OrderDetails = new List<OrderDetails>();
         }
     }
 }

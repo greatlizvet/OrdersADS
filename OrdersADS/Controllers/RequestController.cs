@@ -8,6 +8,7 @@ using OrdersADS.Models;
 
 namespace OrdersADS.Controllers
 {
+    [Authorize(Roles = "ADS")]
     public class RequestController : Controller
     {
         AppIdentityDbContext db = new AppIdentityDbContext();
@@ -121,6 +122,26 @@ namespace OrdersADS.Controllers
                     request.Details.Add(d);
                 }
             }
+        }
+
+        public ActionResult End(int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            Request request = db.Requests.Find(id);
+            if (request == null)
+            {
+                return HttpNotFound();
+            }
+
+            request.StatusId = 7;
+            db.Entry(request).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+
         }
     }
 }

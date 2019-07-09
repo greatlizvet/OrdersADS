@@ -1,0 +1,46 @@
+﻿@model IEnumerable<OrdersADS.Models.Request>
+
+@{
+    ViewBag.Title = "Заявки";
+}
+
+<h2>Заявки</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZakazchikId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status.StatusName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Zakazchik.Name)
+        </td>
+        <td>
+            @if (item.StatusId == 8)
+            {
+                @Html.ActionLink("Отправить счёт", "Send", new { id = item.Id}, new { @class = "btn btn-default btn-xs"})
+            }
+            @if(item.StatusId == 3)
+            {
+                @Html.ActionLink("Платеж прошел", "Pay", new { id = item.Id}, new { @class = "btn btn-default btn-xs"})
+            }
+        </td>
+    </tr>
+}
+
+</table>

@@ -50,3 +50,7 @@
 </div>
 @Html.ActionLink("Изменить", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" }) |
 @Html.ActionLink("Обратно", "Index", null, new { @class = "btn btn-default" })
+@if(Model.StatusId == 6)
+{
+    @Html.ActionLink("Завершено", "End", new { id = Model.Id}, new { @class = "btn btn-default"})
+}

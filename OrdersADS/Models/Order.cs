@@ -25,7 +25,8 @@ namespace OrdersADS.Models
         public int ProviderId { get; set; }
         public virtual Provider Provider { get; set; }
 
-        public ICollection<Detail> Details { get; set; }
+        [Display(Name = "Детали")]
+        public virtual ICollection<Detail> Details { get; set; }
 
         [Display(Name = "Статус")]
         public int StatusOrderId { get; set; }
