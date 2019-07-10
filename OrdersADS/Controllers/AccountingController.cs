@@ -7,13 +7,14 @@ using System.Web;
 using System.Web.Mvc;
 using OrdersADS.Infrastructure;
 using OrdersADS.Models;
-using System.Net.Mail;
 
 namespace OrdersADS.Controllers
 {
     public class AccountingController : Controller
     {
         AppIdentityDbContext db = new AppIdentityDbContext();
+        Mail mail = new Mail();
+
         // GET: Accounting
         public async Task<ActionResult> Index()
         {
