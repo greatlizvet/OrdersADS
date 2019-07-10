@@ -44,33 +44,17 @@ namespace OrdersADS.Controllers
 
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return HttpNotFound();
-            }
-            Request request = db.Requests.Find(id);
-            if (request == null)
-            {
-                return HttpNotFound();
-            }
+            ActionResult result = Find(id, 0);
 
-            return View(request);
+            return result;
         }
 
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return HttpNotFound();
-            }
-            Request request = db.Requests.Find(id);
-            if (request == null)
-            {
-                return HttpNotFound();
-            }
+            ActionResult result = Find(id, 1);
             GetLists();
 
-            return View(request);
+            return result;
         }
 
         [HttpPost]
@@ -122,6 +106,20 @@ namespace OrdersADS.Controllers
                     request.Details.Add(d);
                 }
             }
+        }
+
+        private ActionResult Find(int? id, int action)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            Request request = db.Requests.Find(id);
+            if (request == null)
+            {
+                return HttpNotFound();
+            }
+            return action == 0 ? View("Details", request) : View("Edit", request);
         }
 
         public ActionResult End(int? id)

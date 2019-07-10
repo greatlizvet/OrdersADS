@@ -44,15 +44,19 @@ namespace OrdersADS.Controllers
             return RedirectToAction("Index");
         }
 
-        public void Details(int? id)
+        public ActionResult Details(int? id)
         {
-            Find(id, 0);
+            ActionResult result = Find(id, 0);
+
+            return result;
         }
 
-        public void Edit(int? id)
+        public ActionResult Edit(int? id)
         {
             GetLists();
-            Find(id, 1);
+            ActionResult result = Find(id, 1);
+
+            return result;
         }
 
         [HttpPost]
@@ -91,14 +95,18 @@ namespace OrdersADS.Controllers
             return RedirectToAction("Index");
         }
 
-        public void Buy(int? id)
+        public ActionResult Buy(int? id)
         {
-            States(3, 5, id);
+            ActionResult result = States(3, 5, id);
+
+            return result;
         }
 
-        public void OnWarehouse(int? id)
+        public ActionResult OnWarehouse(int? id)
         {
-            States(4, 6, id);
+            ActionResult result = States(4, 6, id);
+
+            return result;
         }
 
         private void GetLists()

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using OrdersADS.Models;
 using OrdersADS.Infrastructure;
+using System.Threading.Tasks;
 
 namespace OrdersADS.Controllers
 {
@@ -37,31 +38,17 @@ namespace OrdersADS.Controllers
         [HttpGet]
         public ActionResult Details(int? id)
         {
-            if(id == null)
-            {
-                return HttpNotFound();
-            }
-            Detail detail = db.Details.Find(id);
-            if(detail == null)
-            {
-                return HttpNotFound();
-            }
-            return View(detail);
+            ActionResult result = Find(id, 0);
+
+            return result;
         }
 
         [HttpGet]
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return HttpNotFound();
-            }
-            Detail detail = db.Details.Find(id);
-            if (detail == null)
-            {
-                return HttpNotFound();
-            }
-            return View(detail);
+            ActionResult result = Find(id, 1);
+
+            return result;
         }
 
         [HttpPost]
@@ -87,6 +74,20 @@ namespace OrdersADS.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+
+        private ActionResult Find(int? id, int action)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            Detail detail = db.Details.Find(id);
+            if (detail == null)
+            {
+                return HttpNotFound();
+            }
+            return action == 0 ? View("Details", detail) : View("Edit", detail);
         }
     }
 }

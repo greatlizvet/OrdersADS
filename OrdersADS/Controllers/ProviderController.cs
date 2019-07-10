@@ -38,31 +38,17 @@ namespace OrdersADS.Controllers
         [HttpGet]
         public ActionResult Details(int? id)
         {
-            if(id == null)
-            {
-                return HttpNotFound();
-            }
-            Provider provider = db.Providers.Find(id);
-            if(provider == null)
-            {
-                return HttpNotFound();
-            }
-            return View(provider);
+            ActionResult result = Find(id, 0);
+
+            return result;
         }
 
         [HttpGet]
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return HttpNotFound();
-            }
-            Provider provider = db.Providers.Find(id);
-            if (provider == null)
-            {
-                return HttpNotFound();
-            }
-            return View(provider);
+            ActionResult result = Find(id, 1);
+
+            return result;
         }
 
         [HttpPost]
@@ -88,6 +74,20 @@ namespace OrdersADS.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+
+        private ActionResult Find(int? id, int action)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            Provider provider = db.Providers.Find(id);
+            if (provider == null)
+            {
+                return HttpNotFound();
+            }
+            return action == 0 ? View("Details", provider) : View("Edit", provider);
         }
     }
 }

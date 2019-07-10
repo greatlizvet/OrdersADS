@@ -37,32 +37,16 @@ namespace OrdersADS.Controllers
 
         public ActionResult Details(int? id)
         {
-            if(id == null)
-            {
-                return HttpNotFound();
-            }
-            StatusOrder statusOrder = db.StatusOrders.Find(id);
-            if(statusOrder == null)
-            {
-                return HttpNotFound();
-            }
+            ActionResult result = Find(id, 0);
 
-            return View(statusOrder);
+            return result;
         }
 
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return HttpNotFound();
-            }
-            StatusOrder statusOrder = db.StatusOrders.Find(id);
-            if (statusOrder == null)
-            {
-                return HttpNotFound();
-            }
+            ActionResult result = Find(id, 1);
 
-            return View(statusOrder);
+            return result;
         }
 
         [HttpPost]
@@ -89,6 +73,20 @@ namespace OrdersADS.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+
+        private ActionResult Find(int? id, int action)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            StatusOrder statusOrder = db.StatusOrders.Find(id);
+            if (statusOrder == null)
+            {
+                return HttpNotFound();
+            }
+            return action == 0 ? View("Details", statusOrder) : View("Edit", statusOrder);
         }
     }
 }

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using OrdersADS.Infrastructure;
 using OrdersADS.Models;
+using System.Net.Mail;
 
 namespace OrdersADS.Controllers
 {
@@ -12,61 +15,60 @@ namespace OrdersADS.Controllers
     {
         AppIdentityDbContext db = new AppIdentityDbContext();
         // GET: Accounting
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View(db.Requests.ToList());
+            return View(await db.Requests.ToListAsync());
         }
 
-        public ActionResult Send(int? id)
+        public async Task<ActionResult> Send(int? id)
         {
-            if(id == null)
-            {
-                return HttpNotFound();
-            }
-            Request request = db.Requests.Find(id);
-            if(request == null)
-            {
-                return HttpNotFound();
-            }
-            request.StatusId = 3;
-            db.Entry(request).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
+            Task<ActionResult> result = SendPay(id, 3, 0);
 
-            return RedirectToAction("Index");
+            return await result;
         }
 
-        public ActionResult Pay(int? id)
+        public async Task<ActionResult> Pay(int? id)
         {
-            if (id == null)
-            {
-                return HttpNotFound();
-            }
-            Request request = db.Requests.Find(id);
-            if (request == null)
-            {
-                return HttpNotFound();
-            }
+            Task<ActionResult> result = SendPay(id, 4, 1);
 
-            request.StatusId = 4;
-            
-            db.Entry(request).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
-
-            foreach (var r in db.Orders.Where(re => re.RequestId == request.Id))
-            {
-                r.StatusOrderId = 2;
-                db.Entry(r).State = System.Data.Entity.EntityState.Modified;
-            }
-
-            db.SaveChanges();
-
-            return RedirectToAction("Index");
+            return await result;
         }
 
         protected override void Dispose(bool disposing)
         {
             db.Dispose();
             base.Dispose(disposing);
+        }
+
+        private async Task<ActionResult> SendPay(int? id, int status, int action)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            Request request = await db.Requests.FindAsync(id);
+            if (request == null)
+            {
+                return HttpNotFound();
+            }
+
+            request.StatusId = status;
+
+            db.Entry(request).State = EntityState.Modified;
+            await db.SaveChangesAsync();
+
+            if(action == 1)
+            {
+                foreach (var r in db.Orders.Where(re => re.RequestId == request.Id))
+                {
+                    r.StatusOrderId = 2;
+                    db.Entry(r).State = EntityState.Modified;
+                }
+
+                await db.SaveChangesAsync();
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }
