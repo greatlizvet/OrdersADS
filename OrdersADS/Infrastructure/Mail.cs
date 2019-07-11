@@ -19,6 +19,19 @@ namespace OrdersADS.Infrastructure
             emailMessage.From.Add(new MailboxAddress("Администрация", "laleshk@mail.ru"));
             emailMessage.To.Add(new MailboxAddress(" ", email));
             emailMessage.Subject = title;
+            emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Text)
+            {
+                Text = message
+            };
+
+            using (var client = new MailKit.Net.Smtp.SmtpClient())
+            {
+                await client.ConnectAsync("smtp.mail.ru", 25, false);
+                await client.AuthenticateAsync("laleshk@mail.ru", "rtvthjdj0227");
+                await client.SendAsync(emailMessage);
+
+                await client.DisconnectAsync(true);
+            }
         }
     }
 }

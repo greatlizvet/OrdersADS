@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity.Owin;
 using OrdersADS.Infrastructure;
 using OrdersADS.Models;
 
@@ -26,7 +28,7 @@ namespace OrdersADS.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Order order, int[] selDet)
+        public async Task<ActionResult> Create(Order order, int[] selDet)
         {
             if(ModelState.IsValid)
             {
@@ -35,10 +37,12 @@ namespace OrdersADS.Controllers
                 order.StatusOrderId = 1;
 
                 db.Orders.Add(order);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
 
-                Request request = db.Requests.Find(order.Id);
+                Request request = db.Requests.Find(order.RequestId);
                 request.StatusId = 2;
+                await db.SaveChangesAsync();
+                //await SendMessage(request);
             }
 
             return RedirectToAction("Index");
@@ -95,18 +99,18 @@ namespace OrdersADS.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Buy(int? id)
+        public async Task<ActionResult> Buy(int? id)
         {
-            ActionResult result = States(3, 5, id);
+            Task<ActionResult> result = States(3, 5, id);
 
-            return result;
+            return await result;
         }
 
-        public ActionResult OnWarehouse(int? id)
+        public async Task<ActionResult> OnWarehouse(int? id)
         {
-            ActionResult result = States(4, 6, id);
+            Task<ActionResult> result = States(4, 6, id);
 
-            return result;
+            return await result;
         }
 
         private void GetLists()
@@ -137,7 +141,7 @@ namespace OrdersADS.Controllers
             } 
         }
 
-        private ActionResult States(int statusOrder, int statusRequest, int? id)
+        private async Task<ActionResult> States(int statusOrder, int statusRequest, int? id)
         {
             if (id == null)
             {
@@ -153,6 +157,8 @@ namespace OrdersADS.Controllers
             order.Request.StatusId = statusRequest;
             db.Entry(order).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
+
+            await SendMessage(order.Request);
 
             return RedirectToAction("Index");
         }
@@ -170,6 +176,33 @@ namespace OrdersADS.Controllers
             }
 
             return action == 0 ? View("Details", order) : View("Edit", order);
+        }
+
+        private AppUserManager UserManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
+            }
+        }
+
+        private AppRoleManager RoleManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().GetUserManager<AppRoleManager>();
+            }
+        }
+
+        private async Task SendMessage(Request request)
+        {
+            IEnumerable<AppUser> users = UserManager.Users;
+            Mail statusMail = new Mail();
+            foreach (var u in users)
+            {
+                await statusMail.Send(u.Email.ToString(), "Изменился статус",
+                    "Статус заявки " + request.Name.ToString() + " был изменен на " + request.Status.StatusName);
+            }
         }
     }
 }

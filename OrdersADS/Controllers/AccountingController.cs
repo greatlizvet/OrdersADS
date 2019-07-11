@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity.Owin;
 using OrdersADS.Infrastructure;
 using OrdersADS.Models;
 
@@ -68,7 +69,33 @@ namespace OrdersADS.Controllers
                 await db.SaveChangesAsync();
             }
 
+            //AppRole role = await RoleManager.FindByNameAsync("Administrator");
+            IEnumerable<AppUser> users = UserManager.Users;
+            Mail statusMail = new Mail();
+            //AppUser admin = UserManager.Users.Where(u => u.Roles.Contains(role));
+            foreach(var u in users)
+            {
+                await statusMail.Send(u.Email.ToString(), "Изменился статус", 
+                    "Статус заявки " + request.Name.ToString() + " был изменен на " + request.Status.StatusName);
+            }
+
             return RedirectToAction("Index");
+        }
+
+        private AppUserManager UserManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
+            }
+        }
+
+        private AppRoleManager RoleManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().GetUserManager<AppRoleManager>();
+            }
         }
     }
 }

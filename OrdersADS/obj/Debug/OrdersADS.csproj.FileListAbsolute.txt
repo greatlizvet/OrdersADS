@@ -333,3 +333,8 @@ C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\obj\Debug\OrdersADS.csproj.CoreCom
 C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\obj\Debug\OrdersADS.csproj.CopyComplete
 C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\obj\Debug\OrdersADS.dll
 C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\obj\Debug\OrdersADS.pdb
+C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\bin\BouncyCastle.Crypto.dll
+C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\bin\MailKit.dll
+C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\bin\MimeKit.dll
+C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\bin\MailKit.xml
+C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\bin\MimeKit.xml
