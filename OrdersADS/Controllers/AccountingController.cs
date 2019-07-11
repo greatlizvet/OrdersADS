@@ -13,7 +13,6 @@ namespace OrdersADS.Controllers
     public class AccountingController : Controller
     {
         AppIdentityDbContext db = new AppIdentityDbContext();
-        Mail mail = new Mail();
 
         // GET: Accounting
         public async Task<ActionResult> Index()
