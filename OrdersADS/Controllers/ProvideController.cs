@@ -10,6 +10,7 @@ using OrdersADS.Models;
 
 namespace OrdersADS.Controllers
 {
+    [Authorize(Roles = "Smeta, Administrator")]
     public class ProvideController : Controller
     {
         AppIdentityDbContext db = new AppIdentityDbContext();

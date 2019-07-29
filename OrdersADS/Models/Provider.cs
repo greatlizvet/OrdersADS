@@ -24,11 +24,11 @@ namespace OrdersADS.Models
         [Display(Name = "Юридический адрес")]
         public string Address { get; set; }
 
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Ordere> Orderes { get; set; }
 
         public Provider()
         {
-            Orders = new List<Order>();
+            Orderes = new List<Ordere>();
         }
     }
 }

@@ -10,13 +10,14 @@ using OrdersADS.Models;
 
 namespace OrdersADS.Controllers
 {
+    [Authorize(Roles = "Accounting, Administrator")]
     public class OrderController : Controller
     {
         AppIdentityDbContext db = new AppIdentityDbContext();
         // GET: Order
         public ActionResult Index()
         {
-            return View(db.Orders.ToList());
+            return View(db.Orderes.ToList());
         }
 
         public ActionResult Create()
@@ -28,7 +29,7 @@ namespace OrdersADS.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(Order order, int[] selDet)
+        public async Task<ActionResult> Create(Ordere order, int[] selDet)
         {
             if(ModelState.IsValid)
             {
@@ -36,13 +37,13 @@ namespace OrdersADS.Controllers
 
                 order.StatusOrderId = 1;
 
-                db.Orders.Add(order);
+                db.Orderes.Add(order);
                 await db.SaveChangesAsync();
 
                 Request request = db.Requests.Find(order.RequestId);
                 request.StatusId = 2;
                 await db.SaveChangesAsync();
-                //await SendMessage(request);
+                await SendMessage(request);
             }
 
             return RedirectToAction("Index");
@@ -65,9 +66,9 @@ namespace OrdersADS.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Order order, int[] selDet)
+        public ActionResult Edit(Ordere order, int[] selDet)
         {
-            Order newOrder = db.Orders.Find(order.Id);
+            Ordere newOrder = db.Orderes.Find(order.Id);
             newOrder.Name = order.Name;
             newOrder.dateTime = order.dateTime;
             newOrder.ProviderId = order.ProviderId;
@@ -89,10 +90,10 @@ namespace OrdersADS.Controllers
             {
                 return HttpNotFound();
             }
-            Order order = db.Orders.Find(id);
+            Ordere order = db.Orderes.Find(id);
             if(order != null)
             {
-                db.Orders.Remove(order);
+                db.Orderes.Remove(order);
                 db.SaveChanges();
             }
 
@@ -123,20 +124,13 @@ namespace OrdersADS.Controllers
             ViewBag.Details = db.Details.ToList();
         }
 
-        private void SetDetails(Order order, int[] selDet)
+        private void SetDetails(Ordere order, int[] selDet)
         {
             if (selDet != null)
             {
                 foreach (var d in db.Details.Where(de => selDet.Contains(de.Id)))
                 {
                     order.Details.Add(d);
-                    db.OrderDetails.Add(new OrderDetails
-                    {
-                        OrderId = order.Id,
-                        DetailId = d.Id,
-                        Count = 0,
-                        Price = 0
-                    });
                 }
             } 
         }
@@ -147,7 +141,7 @@ namespace OrdersADS.Controllers
             {
                 return HttpNotFound();
             }
-            Order order = db.Orders.Find(id);
+            Ordere order = db.Orderes.Find(id);
             if (order == null)
             {
                 return HttpNotFound();
@@ -169,7 +163,7 @@ namespace OrdersADS.Controllers
             {
                 return HttpNotFound();
             }
-            Order order = db.Orders.Find(id);
+            Ordere order = db.Orderes.Find(id);
             if (order == null)
             {
                 return HttpNotFound();

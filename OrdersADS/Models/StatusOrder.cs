@@ -10,11 +10,11 @@ namespace OrdersADS.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Ordere> Orderes { get; set; }
 
         public StatusOrder()
         {
-            Orders = new List<Order>();
+            Orderes = new List<Ordere>();
         }
     }
 }

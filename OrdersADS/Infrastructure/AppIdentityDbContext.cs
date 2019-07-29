@@ -10,7 +10,7 @@ namespace OrdersADS.Infrastructure
 {
     public class AppIdentityDbContext : IdentityDbContext<AppUser>
     {
-        public AppIdentityDbContext() : base ("IdentityDb") { }
+        public AppIdentityDbContext() : base ("OrderContext") { }
 
         public static AppIdentityDbContext Create()
         {
@@ -18,8 +18,7 @@ namespace OrdersADS.Infrastructure
         }
 
         public DbSet<Detail> Details { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<OrderDetails> OrderDetails { get; set; }
+        public DbSet<Ordere> Orderes { get; set; }
         public DbSet<Provider> Providers { get; set; }
         public DbSet<Request> Requests { get; set; }
         public DbSet<Status> Statuses { get; set; }

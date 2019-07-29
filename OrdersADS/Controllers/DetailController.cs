@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace OrdersADS.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class DetailController : Controller
     {
         AppIdentityDbContext db = new AppIdentityDbContext();

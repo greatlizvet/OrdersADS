@@ -8,6 +8,7 @@ using OrdersADS.Models;
 
 namespace OrdersADS.Controllers
 {
+    [Authorize(Roles = "Administrator, Smeta")]
     public class ZakazchikController : Controller
     {
         AppIdentityDbContext db = new AppIdentityDbContext();

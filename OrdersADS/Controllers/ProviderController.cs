@@ -8,6 +8,7 @@ using OrdersADS.Infrastructure;
 
 namespace OrdersADS.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class ProviderController : Controller
     {
         AppIdentityDbContext db = new AppIdentityDbContext();

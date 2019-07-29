@@ -60,7 +60,7 @@ namespace OrdersADS.Controllers
 
             if(action == 1)
             {
-                foreach (var r in db.Orders.Where(re => re.RequestId == request.Id))
+                foreach (var r in db.Orderes.Where(re => re.RequestId == request.Id))
                 {
                     r.StatusOrderId = 2;
                     db.Entry(r).State = EntityState.Modified;

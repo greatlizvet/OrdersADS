@@ -338,3 +338,5 @@ C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\bin\MailKit.dll
 C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\bin\MimeKit.dll
 C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\bin\MailKit.xml
 C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\bin\MimeKit.xml
+C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\obj\Debug\OrdersADS.Migrations.NewDB.resources
+C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\obj\Debug\OrdersADS.Migrations.DetailRequest.resources

@@ -213,12 +213,19 @@
     <Compile Include="Migrations\201907090258055_oldVersion.Designer.cs">
       <DependentUpon>201907090258055_oldVersion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907290817243_NewDB.cs" />
+    <Compile Include="Migrations\201907290817243_NewDB.Designer.cs">
+      <DependentUpon>201907290817243_NewDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907290856131_DetailRequest.cs" />
+    <Compile Include="Migrations\201907290856131_DetailRequest.Designer.cs">
+      <DependentUpon>201907290856131_DetailRequest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppRole.cs" />
     <Compile Include="Models\AppUserModels.cs" />
     <Compile Include="Models\Detail.cs" />
-    <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\OrderDetails.cs" />
+    <Compile Include="Models\Ordere.cs" />
     <Compile Include="Models\Provider.cs" />
     <Compile Include="Models\Request.cs" />
     <Compile Include="Models\Status.cs" />
@@ -340,6 +347,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907090258055_oldVersion.resx">
       <DependentUpon>201907090258055_oldVersion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907290817243_NewDB.resx">
+      <DependentUpon>201907290817243_NewDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907290856131_DetailRequest.resx">
+      <DependentUpon>201907290856131_DetailRequest.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
