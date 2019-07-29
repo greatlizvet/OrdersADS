@@ -38,12 +38,18 @@ namespace OrdersADS.Controllers
                 request.StatusId = 1;
 
                 db.Requests.Add(request);
-                await db.SaveChangesAsync();
+                db.SaveChanges();
 
-                await SendMessage(db.Requests.Find(request.Id));
+                await Send(request.Id);
             }
 
             return RedirectToAction("Index");
+        }
+
+        private async Task Send(int id)
+        {
+            Request request = db.Requests.Find(id);
+            await SendMessage(request);
         }
 
         public ActionResult Details(int? id)
