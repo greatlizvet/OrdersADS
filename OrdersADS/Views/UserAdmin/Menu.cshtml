@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "admin";
+}
+
+<h2>Панель администратора</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Пользователи</h2>
+        <p>
+            Добавление, изменение и удаление учетных записей сотрудников
+        </p>
+        @Html.ActionLink("Пользователи >>", "Index", "UserAdmin", null, new { @class = "btn btn-default" })
+    </div>
+    <div class="col-md-4">
+        <h2>Роли</h2>
+        <p>Добавление, изменение и удаление ролей учетных записей, которые предоставляют им доступ к определенным видам деятельности приложения</p>
+        @Html.ActionLink("Роли >>", "Index", "RoleAdmin", null, new { @class = "btn btn-default" })
+    </div>
+</div>

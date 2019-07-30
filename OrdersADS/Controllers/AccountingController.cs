@@ -11,6 +11,7 @@ using OrdersADS.Models;
 
 namespace OrdersADS.Controllers
 {
+    [Authorize(Roles = "Accounting, Administrator")]
     public class AccountingController : Controller
     {
         AppIdentityDbContext db = new AppIdentityDbContext();
