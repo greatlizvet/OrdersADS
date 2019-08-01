@@ -12,7 +12,7 @@ namespace OrdersADS.Infrastructure
         public static MvcHtmlString GetUserName(this HtmlHelper html, string id)
         {
             AppUserManager manager = HttpContext.Current.GetOwinContext().GetUserManager<AppUserManager>();
-
+            
             return new MvcHtmlString(manager.FindByIdAsync(id).Result.UserName);
         }
     }

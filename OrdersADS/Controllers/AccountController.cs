@@ -48,6 +48,7 @@ namespace OrdersADS.Controllers
                 {
                     IsPersistent = false
                 }, ident);
+
                 return Redirect(returnUrl);
             }
 

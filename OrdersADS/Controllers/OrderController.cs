@@ -116,7 +116,8 @@ namespace OrdersADS.Controllers
 
         private void GetLists()
         {
-            SelectList requests = new SelectList(db.Requests, "Id", "Name");
+            var closeReq = db.Requests.Where(re => re.StatusId == 7);
+            SelectList requests = new SelectList(db.Requests.Except(closeReq), "Id", "Name");
             SelectList providers = new SelectList(db.Providers, "Id", "Name");
 
             ViewBag.Requests = requests;

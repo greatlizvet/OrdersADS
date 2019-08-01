@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using Microsoft.AspNet.Identity.Owin;
+using OrdersADS.Infrastructure;
 
 namespace OrdersADS.Controllers
 {
@@ -26,6 +30,14 @@ namespace OrdersADS.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        private AppUserManager UserManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
+            }
         }
     }
 }

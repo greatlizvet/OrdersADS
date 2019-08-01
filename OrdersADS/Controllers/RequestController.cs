@@ -48,8 +48,11 @@ namespace OrdersADS.Controllers
 
         private async Task Send(int id)
         {
-            Request request = db.Requests.Find(id);
-            await SendMessage(request);
+            using (AppIdentityDbContext DB = new AppIdentityDbContext())
+            {
+                Request request = DB.Requests.Find(id);
+                await SendMessage(request);
+            }
         }
 
         public ActionResult Details(int? id)
@@ -179,6 +182,12 @@ namespace OrdersADS.Controllers
                 await statusMail.Send(u.Email.ToString(), "Изменился статус",
                     "Статус заявки " + request.Name.ToString() + " был изменен на " + request.Status.StatusName);
             }
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
         }
     }
 }
