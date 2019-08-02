@@ -84,6 +84,7 @@ namespace OrdersADS.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
         public ActionResult Delete(int? id)
         {
             if(id == null)
@@ -91,11 +92,20 @@ namespace OrdersADS.Controllers
                 return HttpNotFound();
             }
             Ordere order = db.Orderes.Find(id);
-            if(order != null)
+            if(order == null)
             {
-                db.Orderes.Remove(order);
-                db.SaveChanges();
+                return HttpNotFound();
             }
+
+            return View(order);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Ordere ordere = db.Orderes.Find(id);
+            db.Orderes.Remove(ordere);
+            db.SaveChanges();
 
             return RedirectToAction("Index");
         }

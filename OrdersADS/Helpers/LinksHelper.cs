@@ -24,8 +24,8 @@ namespace OrdersADS
 
             AppUser user = db.Users.FirstOrDefault(u => u.UserName == User.Identity.Name);
             TagBuilder ul = new TagBuilder("ul");
+            Tag tag = new Tag();
             ICollection<IdentityUserRole> roles = new List<IdentityUserRole>();
-            List<string> roleName = new List<string>();
 
             if(user != null)
             {
@@ -34,22 +34,44 @@ namespace OrdersADS
 
             foreach(var r in roles)
             {
-                switch(r.ToString())
+                string roleName = db.Roles.Find(r.RoleId).Name;
+                switch(roleName)
                 {
                     case "Administrator":
-                        TagBuilder li = new TagBuilder("li");
-                        TagBuilder a = new TagBuilder("a");
-                        a.MergeAttribute("href", "/admin");
-                        a.SetInnerText("админка");
-                        li.InnerHtml += a.ToString();
-                        ul.InnerHtml += li.ToString();
+                        ul.InnerHtml += tag.CreateTags("/admin", "Панель администратора").ToString();
                         break;
+                    case "ADS":
+                        ul.InnerHtml += tag.CreateTags("/Request/Index", "Заявки: АДС").ToString();
+                        break;
+                    case "Accounting":
+                        ul.InnerHtml += tag.CreateTags("/Accounting/Index", "Заявки: Бухгалтерия").ToString();
+                        break;
+                    case "Smeta":
+                        ul.InnerHtml += tag.CreateTags("/Order/Index", "Заказы").ToString();
+                        ul.InnerHtml += tag.CreateTags("/Provide/Index", "Заявки: На оплату");
+                        ul.InnerHtml += tag.CreateTags("/Zakazchik/Index", "Заказчики");
+                        break;
+
                 }
             }
 
             ul.MergeAttribute("class", ulClass);
 
             return MvcHtmlString.Create(ul.ToString());
+        }
+    }
+
+    public class Tag
+    {
+        public TagBuilder CreateTags(string link, string innerText)
+        {
+            TagBuilder li = new TagBuilder("li");
+            TagBuilder a = new TagBuilder("a");
+            a.MergeAttribute("href", link);
+            a.SetInnerText(innerText);
+            li.InnerHtml += a.ToString();
+
+            return li;
         }
     }
 }

@@ -59,19 +59,30 @@ namespace OrdersADS.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult Delete(int? id)
         {
             if(id == null)
             {
                 return HttpNotFound();
             }
+
             Zakazchik zakazchik = db.Zakazchiks.Find(id);
-            if(zakazchik != null)
+
+            if(zakazchik == null)
             {
-                db.Zakazchiks.Remove(zakazchik);
-                db.SaveChanges();
+                return HttpNotFound();
             }
+
+            return View(zakazchik);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Zakazchik zakazchik = db.Zakazchiks.Find(id);
+            db.Zakazchiks.Remove(zakazchik);
+            db.SaveChanges();
 
             return RedirectToAction("Index");
         }

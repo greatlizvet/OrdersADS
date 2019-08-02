@@ -310,6 +310,11 @@
     <Content Include="Views\Provide\Index.cshtml" />
     <Content Include="Views\Accounting\Index.cshtml" />
     <Content Include="Views\UserAdmin\Menu.cshtml" />
+    <Content Include="Views\Detail\Delete.cshtml" />
+    <Content Include="Views\Order\Delete.cshtml" />
+    <Content Include="Views\Provider\Delete.cshtml" />
+    <Content Include="Views\Request\Delete.cshtml" />
+    <Content Include="Views\Zakazchik\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

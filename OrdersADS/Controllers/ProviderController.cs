@@ -60,19 +60,30 @@ namespace OrdersADS.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult Delete(int? id)
         {
             if(id == null)
             {
                 return HttpNotFound();
             }
+
             Provider provider = db.Providers.Find(id);
-            if(provider != null)
+
+            if(provider == null)
             {
-                db.Providers.Remove(provider);
-                db.SaveChanges();
+                return HttpNotFound();
             }
+
+            return View(provider);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Provider provider = db.Providers.Find(id);
+            db.Providers.Remove(provider);
+            db.SaveChanges();
 
             return RedirectToAction("Index");
         }

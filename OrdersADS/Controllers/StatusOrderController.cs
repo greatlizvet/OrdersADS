@@ -59,23 +59,6 @@ namespace OrdersADS.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
-        public ActionResult Delete(int? id)
-        {
-            if(id == null)
-            {
-                return HttpNotFound();
-            }
-            StatusOrder statusOrder = db.StatusOrders.Find(id);
-            if(statusOrder != null)
-            {
-                db.StatusOrders.Remove(statusOrder);
-                db.SaveChanges();
-            }
-
-            return RedirectToAction("Index");
-        }
-
         private ActionResult Find(int? id, int action)
         {
             if (id == null)

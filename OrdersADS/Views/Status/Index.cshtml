@@ -4,7 +4,7 @@
     ViewBag.Title = "Статусы";
 }
 
-<h2>Статусы</h2>
+<h2>Статусы заявок</h2>
 <table class="table">
     <tr>
         <th>
@@ -19,12 +19,8 @@
             @Html.DisplayFor(modelItem => item.StatusName)
         </td>
         <td>
-            @using (Html.BeginForm("Delete", "Status", new { id = item.Id }))
-            {
-                @Html.ActionLink("Изменить", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" })
-                @Html.ActionLink("Детали", "Details", new { id = item.Id }, new { @class = "btn btn-default btn-xs" })
-                <input type="submit" value="Удалить" class="btn btn-danger btn-xs" />
-            }
+                @Html.ActionLink("Изменить", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Детали", "Details", new { id = item.Id }, new { @class = "btn btn-default" })
         </td>
     </tr>
 }

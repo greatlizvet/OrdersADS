@@ -87,18 +87,30 @@ namespace OrdersADS.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
         public ActionResult Delete(int? id)
         {
             if(id == null)
             {
                 return HttpNotFound();
             }
+
             Request request = db.Requests.Find(id);
-            if(request != null)
+
+            if(request == null)
             {
-                db.Requests.Remove(request);
-                db.SaveChanges();
+                return HttpNotFound();
             }
+
+            return View(request);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Request request = db.Requests.Find(id);
+            db.Requests.Remove(request);
+            db.SaveChanges();
 
             return RedirectToAction("Index");
         }
