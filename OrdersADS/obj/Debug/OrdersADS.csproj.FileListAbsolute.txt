@@ -340,3 +340,15 @@ C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\bin\MailKit.xml
 C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\bin\MimeKit.xml
 C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\obj\Debug\OrdersADS.Migrations.NewDB.resources
 C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\obj\Debug\OrdersADS.Migrations.DetailRequest.resources
+C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\bin\Mono.Security.dll
+C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\bin\Npgsql.dll
+C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\bin\Npgsql.EntityFramework.dll
+C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\bin\Npgsql.xml
+C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\bin\Npgsql.EntityFramework.xml
+C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\bin\de\Npgsql.resources.dll
+C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\bin\es\Npgsql.resources.dll
+C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\bin\fi\Npgsql.resources.dll
+C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\bin\fr\Npgsql.resources.dll
+C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\bin\ja\Npgsql.resources.dll
+C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\bin\zh-CN\Npgsql.resources.dll
+C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\obj\Debug\OrdersADS.Migrations.pgsql.resources
