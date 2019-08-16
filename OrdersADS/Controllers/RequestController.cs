@@ -15,9 +15,43 @@ namespace OrdersADS.Controllers
     {
         AppIdentityDbContext db = new AppIdentityDbContext();
         // GET: Request
-        public ActionResult Index()
+        public ActionResult Index(string searchName, string zakaz, string status)
         {
-            return View(db.Requests.ToList());
+            var zakazQry = from z in db.Requests
+                           orderby z.Zakazchik.Name
+                           select z.Zakazchik.Name;
+
+            var statusQry = from s in db.Requests
+                            orderby s.Status.StatusName
+                            select s.Status.StatusName;
+
+            var zakazList = new List<string>();
+            zakazList.AddRange(zakazQry.Distinct());
+            ViewData["zakaz"] = new SelectList(zakazList);
+
+            var statList = new List<string>();
+            statList.AddRange(statusQry.Distinct());
+            ViewData["status"] = new SelectList(statList);
+
+            var requests = from r in db.Requests
+                           select r;
+
+            if(!String.IsNullOrEmpty(searchName))
+            {
+                requests = requests.Where(r => r.Name.Contains(searchName));
+            }
+
+            if(!String.IsNullOrEmpty(zakaz))
+            {
+                requests = requests.Where(z => z.Zakazchik.Name == zakaz);
+            }
+
+            if(!String.IsNullOrEmpty(status))
+            {
+                requests = requests.Where(s => s.Status.StatusName == status);
+            }
+
+            return View(requests);
         }
 
         public ActionResult Create()

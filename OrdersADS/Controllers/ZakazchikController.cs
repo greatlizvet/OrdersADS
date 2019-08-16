@@ -13,9 +13,17 @@ namespace OrdersADS.Controllers
     {
         AppIdentityDbContext db = new AppIdentityDbContext();
         // GET: Zakazchik
-        public ActionResult Index()
+        public ActionResult Index(string searchName)
         {
-            return View(db.Zakazchiks.ToList());
+            var zakazchik = from z in db.Zakazchiks
+                            select z;
+
+            if(!String.IsNullOrEmpty(searchName))
+            {
+                zakazchik = zakazchik.Where(z => z.Name.Contains(searchName));
+            }
+
+            return View(zakazchik);
         }
 
         public ActionResult Create()

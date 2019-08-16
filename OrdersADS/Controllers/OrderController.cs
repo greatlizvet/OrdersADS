@@ -15,9 +15,56 @@ namespace OrdersADS.Controllers
     {
         AppIdentityDbContext db = new AppIdentityDbContext();
         // GET: Order
-        public ActionResult Index()
+        public ActionResult Index(string searchName, string request, string provider, string status)
         {
-            return View(db.Orderes.ToList());
+            var reqQry = from m in db.Orderes
+                           orderby m.Request.Name
+                           select m.Request.Name;
+
+            var provQry = from p in db.Orderes
+                          orderby p.Provider.Name
+                          select p.Provider.Name;
+
+            var statusQry = from s in db.Orderes
+                            orderby s.StatusOrder.Name
+                            select s.StatusOrder.Name;
+
+            var reqList = new List<string>();
+            reqList.AddRange(reqQry.Distinct());
+            ViewData["request"] = new SelectList(reqList);
+
+            var provList = new List<string>();
+            provList.AddRange(provQry.Distinct());
+            ViewData["provider"] = new SelectList(provList);
+
+            var statList = new List<string>();
+            statList.AddRange(statusQry.Distinct());
+            ViewData["status"] = new SelectList(statList);
+
+            var orderes = from m in db.Orderes
+                         select m;
+
+            if(!String.IsNullOrEmpty(searchName))
+            {
+                orderes = orderes.Where(s => s.Name.Contains(searchName));
+            }
+
+            if(!String.IsNullOrEmpty(request))
+            {
+                orderes = orderes.Where(r => r.Request.Name == request);
+            }
+
+            if(!String.IsNullOrEmpty(provider))
+            {
+                orderes = orderes.Where(p => p.Provider.Name == provider);
+            }
+
+            if(!String.IsNullOrEmpty(status))
+            {
+                orderes = orderes.Where(s => s.StatusOrder.Name == status);
+            }
+
+            return View(orderes);
         }
 
         public ActionResult Create()

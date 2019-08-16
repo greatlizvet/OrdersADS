@@ -13,9 +13,17 @@ namespace OrdersADS.Controllers
     {
         AppIdentityDbContext db = new AppIdentityDbContext();
         // GET: Provider
-        public ActionResult Index()
+        public ActionResult Index(string searchName)
         {
-            return View(db.Providers.ToList());
+            var provider = from p in db.Providers
+                           select p;
+
+            if(!String.IsNullOrEmpty(searchName))
+            {
+                provider = provider.Where(p => p.Name.Contains(searchName));
+            }
+
+            return View(provider);
         }
 
         [HttpGet]

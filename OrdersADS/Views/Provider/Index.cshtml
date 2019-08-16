@@ -5,6 +5,12 @@
 }
 
 <h2>Поставщики</h2>
+<form asp-controller="Provider" asp-action="Index" method="get">
+    <p>
+        Наименование: <input type="text" name="SearchName">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 <table class="table">
     <tr>
         <th>

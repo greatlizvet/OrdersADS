@@ -5,6 +5,15 @@
 }
 
 <h2>Заказы</h2>
+<form asp-controller="Order" asp-action="Index" method="get">
+    <p>
+        Заявка: @Html.DropDownList("request")
+        Наименование: <input type="text" name="SearchName">
+        Поставщик: @Html.DropDownList("provider")
+        Статус: @Html.DropDownList("status")
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 <table class="table">
     <tr>
         <th>

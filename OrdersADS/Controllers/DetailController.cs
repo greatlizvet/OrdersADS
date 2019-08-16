@@ -14,9 +14,17 @@ namespace OrdersADS.Controllers
     {
         AppIdentityDbContext db = new AppIdentityDbContext();
         // GET: Detail
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            return View(db.Details.ToList());
+            var details = from d in db.Details
+                          select d;
+
+            if(!String.IsNullOrEmpty(searchString))
+            {
+                details = details.Where(s => s.Name.Contains(searchString));
+            }
+
+            return View(details);
         }
 
         [HttpGet]
