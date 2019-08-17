@@ -6,10 +6,17 @@
 
 <h2>Заказчики</h2>
 <form asp-controller="Zakazchik" asp-action="Index" method="get">
-    <p>
-        Наименование: <input type="text" name="SearchName">
-        <input type="submit" value="Filter" />
-    </p>
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Название организации</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" placeholder="Название организации" name="SearchName">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="offset-sm-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">Фильтр</button>
+        </div>
+    </div>
 </form>
 <table class="table">
     <tr>

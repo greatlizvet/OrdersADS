@@ -5,15 +5,32 @@
 }
 
 <h2>Заказы</h2>
-<form asp-controller="Order" asp-action="Index" method="get">
-    <p>
-        Заявка: @Html.DropDownList("request")
-        Наименование: <input type="text" name="SearchName">
-        Поставщик: @Html.DropDownList("provider")
-        Статус: @Html.DropDownList("status")
-        <input type="submit" value="Filter" />
-    </p>
-</form>
+<div class="btn-group">
+    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Сортировка
+    </button>
+    <div class="dropdown-menu">
+        <form asp-controller="Order" asp-action="Index" method="get">
+            <div class="form-group">
+                <label>Наименование:</label>
+                <input type="text" class="form-control" placeholder="Наименование" name="SearchName">
+            </div>
+            <div class="form-group">
+                <label>Заявка:</label>
+                @Html.DropDownList("request", null, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Поставщик:</label>
+                @Html.DropDownList("provider", null, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Статус:</label>
+                @Html.DropDownList("status", null, new { @class = "form-control" })
+            </div>
+            <button type="submit" class="btn btn-primary">Фильтр</button>
+        </form>
+    </div>
+</div>
 <table class="table">
     <tr>
         <th>

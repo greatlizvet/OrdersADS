@@ -14,14 +14,14 @@ namespace OrdersADS.Controllers
     {
         AppIdentityDbContext db = new AppIdentityDbContext();
         // GET: Detail
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string searchName)
         {
             var details = from d in db.Details
                           select d;
 
-            if(!String.IsNullOrEmpty(searchString))
+            if(!String.IsNullOrEmpty(searchName))
             {
-                details = details.Where(s => s.Name.Contains(searchString));
+                details = details.Where(s => s.Name.Contains(searchName));
             }
 
             return View(details);
