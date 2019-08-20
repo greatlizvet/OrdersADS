@@ -31,10 +31,10 @@
 </div>
 <div class="display-label"><b>Заказы</b></div>
 <ul>
-    @foreach (OrderDetail o in Model.OrderDetails)
+    @foreach (Ordere o in Model.Orderes)
     {
-        <li>@o.Order.Name</li>
+        <li>@o.Name</li>
     }
 </ul>
-    @Html.ActionLink("Изменить", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary"})
-    @Html.ActionLink("Обратно", "Index", null, new { @class = "btn btn-default"})
+@Html.ActionLink("Изменить", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Обратно", "Index", null, new { @class = "btn btn-default" })
