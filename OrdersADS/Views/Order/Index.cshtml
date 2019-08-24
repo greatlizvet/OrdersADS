@@ -5,11 +5,12 @@
 }
 
 <h2>Заказы</h2>
-<div class="btn-group">
-    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Сортировка
-    </button>
-    <div class="dropdown-menu">
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  Сортировка
+</button>
+
+<div class="collapse" id="collapseExample">
+    <div class="well">
         <form asp-controller="Order" asp-action="Index" method="get">
             <div class="form-group">
                 <label>Наименование:</label>
