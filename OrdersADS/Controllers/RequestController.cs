@@ -203,6 +203,11 @@ namespace OrdersADS.Controllers
 
         }
 
+        public ActionResult Drop()
+        {
+            return RedirectToAction("Index");
+        }
+
         private AppUserManager UserManager
         {
             get

@@ -235,6 +235,10 @@
     <Compile Include="Migrations\201908131454341_pgsql.Designer.cs">
       <DependentUpon>201908131454341_pgsql.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908260828444_req.cs" />
+    <Compile Include="Migrations\201908260828444_req.Designer.cs">
+      <DependentUpon>201908260828444_req.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AppRole.cs" />
     <Compile Include="Models\AppUserModels.cs" />
@@ -376,6 +380,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908131454341_pgsql.resx">
       <DependentUpon>201908131454341_pgsql.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908260828444_req.resx">
+      <DependentUpon>201908260828444_req.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -5,14 +5,30 @@
 }
 
 <h2>Заявки</h2>
-<form asp-controller="Request" asp-action="Index" method="get">
-    <p>
-        Заказчик: @Html.DropDownList("zakaz")
-        Наименование: <input type="text" name="SearchName">
-        Статус: @Html.DropDownList("status")
-        <input type="submit" value="Filter" />
-    </p>
-</form>
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Сортировка
+</button>
+
+<div class="collapse" id="collapseExample">
+    <div class="well">
+        <form asp-controller="Order" asp-action="Index" method="get">
+            <div class="form-group">
+                <label>Наименование:</label>
+                <input type="text" class="form-control" placeholder="Наименование" name="SearchName">
+            </div>
+            <div class="form-group">
+                <label>Заказ:</label>
+                @Html.DropDownList("zakaz", null, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Статус:</label>
+                @Html.DropDownList("status", null, new { @class = "form-control" })
+            </div>
+            <button type="submit" class="btn btn-primary">Фильтр</button>
+            @Html.ActionLink("Сброс", "Drop", "Order", new { @class = "btn btn-default" })
+        </form>
+    </div>
+</div>
 <table class="table">
     <tr>
         <th>
@@ -40,9 +56,9 @@
                 @Html.DisplayFor(modelItem => item.Status.StatusName)
             </td>
             <td>
-                    @Html.ActionLink("Изменить", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
-                    @Html.ActionLink("Детали", "Details", new { id = item.Id }, new { @class = "btn btn-default" })
-                    @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Изменить", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Детали", "Details", new { id = item.Id }, new { @class = "btn btn-default" })
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
             </td>
         </tr>
     }

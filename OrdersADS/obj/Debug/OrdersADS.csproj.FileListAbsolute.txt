@@ -352,3 +352,4 @@ C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\bin\fr\Npgsql.resources.dll
 C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\bin\ja\Npgsql.resources.dll
 C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\bin\zh-CN\Npgsql.resources.dll
 C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\obj\Debug\OrdersADS.Migrations.pgsql.resources
+C:\Users\Лиза\Desktop\OrdersADS\OrdersADS\obj\Debug\OrdersADS.Migrations.req.resources

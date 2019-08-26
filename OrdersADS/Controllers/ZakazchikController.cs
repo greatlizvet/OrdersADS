@@ -95,6 +95,11 @@ namespace OrdersADS.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Drop()
+        {
+            return RedirectToAction("Index");
+        }
+
         private ActionResult Find(int? id, int action)
         {
             if (id == null)

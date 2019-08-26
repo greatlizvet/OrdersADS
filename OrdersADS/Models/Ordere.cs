@@ -13,7 +13,7 @@ namespace OrdersADS.Models
         [Display(Name = "Название")]
         public string Name { get; set; }
 
-        [Display(Name = "Заказ")]
+        [Display(Name = "Заявка")]
         public int RequestId { get; set; }
         public virtual Request Request { get; set; }
 

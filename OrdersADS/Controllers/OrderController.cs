@@ -170,6 +170,10 @@ namespace OrdersADS.Controllers
 
             return await result;
         }
+        public ActionResult Drop()
+        {
+            return RedirectToAction("Index");
+        }
 
         private void GetLists()
         {
